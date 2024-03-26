@@ -1,0 +1,10 @@
+.appContent {
+  padding-left: var(--navigation-width);
+  min-width: 100%;
+  background-color: var(--app-background);
+}
+
+.main {
+  min-height: calc(100vh - var(--header-height));
+  margin-top: var(--header-height);
+}

@@ -1,0 +1,40 @@
+.page {
+  width: 100%;
+  padding: 40px;
+  margin-top: 12vh;
+}
+
+.div1 {
+  background: url("/public/images/banner.jpeg");
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.chakra-button .bannerButton {
+  background: var(--btn-primary);
+}
+
+.section {
+  margin-top: 40px;
+}
+
+.box {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  /* border: 2px solid #aded7d; */
+}
+.img {
+  max-height: 100%;
+  max-width: 100%;
+}
+.img2 {
+  max-height: 100%;
+  max-width: 100%;
+}
