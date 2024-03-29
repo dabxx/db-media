@@ -1,8 +1,22 @@
 .appContent {
-  padding-left: var(--navigation-width);
   min-width: 100%;
   background-color: var(--app-background);
 }
+
+/* For mobile devices */
+@media screen and (max-width: 767px) {
+  .appContent {
+    padding-left: 0;
+  }
+}
+
+/* For other screen sizes */
+@media screen and (min-width: 768px) {
+  .appContent {
+    padding-left: var(--navigation-width);
+  }
+}
+
 
 .main {
   min-height: calc(100vh - var(--header-height));
