@@ -418,7 +418,10 @@ function LandingPage() {
             What I Know
           </Heading>
           <Flex gap="20px" mt="20px" flexDirection={["column", "row"]}>
-            <Card className="or-card" maxW={["100%", "14.5vw"]}>
+            <Card
+              className="or-card"
+              w={["100%", "100%", "15vw", "15vw", "15vw", "15vw"]}
+            >
               <CardBody borderRadius="20px">
                 <Heading size="md" textAlign="center">
                   Frontend
@@ -447,7 +450,10 @@ function LandingPage() {
                 </div>
               </CardBody>
             </Card>
-            <Card className="or-card" maxW={["100%", "14.5vw"]}>
+            <Card
+              className="or-card"
+              w={["100%", "100%", "15vw", "15vw", "15vw", "15vw"]}
+            >
               <CardBody borderRadius="20px">
                 <Heading size="md">Backend</Heading>
                 <div className={style.box}>Express js</div>
@@ -465,7 +471,10 @@ function LandingPage() {
                 </div>
               </CardBody>
             </Card>
-            <Card className="or-card" maxW={["100%", "14.5vw"]}>
+            <Card
+              className="or-card"
+              w={["100%", "100%", "15vw", "15vw", "15vw", "15vw"]}
+            >
               <CardBody borderRadius="20px">
                 <Heading size="md">Database</Heading>
                 <div className={style.box}>MySQL</div>
@@ -483,7 +492,10 @@ function LandingPage() {
                 </div>
               </CardBody>
             </Card>
-            <Card className="or-card" maxW={["100%", "14.5vw"]}>
+            <Card
+              className="or-card"
+              w={["100%", "100%", "15vw", "15vw", "15vw", "15vw"]}
+            >
               <CardBody borderRadius="20px">
                 <Heading size="md">Devops</Heading>
                 <div className={style.box}>Docker</div>
