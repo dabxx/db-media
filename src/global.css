@@ -42,12 +42,12 @@ code {
 }
 
 .or-card.chakra-card {
-  width: 14.5vw;
+  /* width: 14.5vw; */
   background: var(--card-primary);
   color: var(--text-primary);
 }
 .or-projects-card.chakra-card {
-  max-width: 20vw;
+  /* max-width: 20vw; */
   background: var(--card-primary);
   color: var(--text-primary);
 }
