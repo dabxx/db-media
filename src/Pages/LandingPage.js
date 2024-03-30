@@ -409,6 +409,39 @@ function LandingPage() {
                 </Stack>
               </CardBody>
             </Card>
+            <Card
+              className="or-projects-card"
+              borderRadius="0.5rem"
+              overflow="hidden"
+              maxW={["100%", "20vw"]}
+            >
+              <CardBody p="0">
+                <Stack mt="6" spacing="3" p="0 1.25rem  1.25rem 1.25rem">
+                  <Heading size="md" color="#fff">
+                    Other Project Links
+                  </Heading>
+
+                  <Text>
+                    <a
+                      href="https://alsahiltechnical.com/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      alsahiltechnical.com
+                    </a>
+                  </Text>
+                  <Text>
+                    <a
+                      href="https://cgikoramangala.wixsite.com/churchofgodbangalore"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      churchofgodbangalore.org
+                    </a>
+                  </Text>
+                </Stack>
+              </CardBody>
+            </Card>
           </Flex>
         </Flex>
 
