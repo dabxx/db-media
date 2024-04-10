@@ -501,7 +501,7 @@ function SideNav() {
                 margin={{ base: "2rem 1rem", md: "initial" }}
               >
                 <a
-                  href="https://drive.google.com/file/d/1bD8D1sY-0o8rz3D-U4QsNfiQaPc5dkyU/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1zy8g2dTcrlvrdvarv2cZaQ1Zxr4MvmKR/view?usp=sharing"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -680,7 +680,7 @@ function SideNav() {
             </li>
             <li>
               <a
-                href="https://drive.google.com/file/d/1bD8D1sY-0o8rz3D-U4QsNfiQaPc5dkyU/view?usp=sharing"
+                href="https://drive.google.com/file/d/1zy8g2dTcrlvrdvarv2cZaQ1Zxr4MvmKR/view?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
               >

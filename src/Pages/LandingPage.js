@@ -460,15 +460,33 @@ function LandingPage() {
                   Frontend
                 </Heading>
                 <Flex gap="5px">
-                  <div className={style.box}>HTML</div>
-                  <div className={style.box}>CSS</div>
+                  <div
+                    className={style.box}
+                    style={{ border: "1.5px solid #e34c26" }}
+                  >
+                    HTML
+                  </div>
+                  <div
+                    className={style.box}
+                    style={{ border: "1.5px solid #264de4" }}
+                  >
+                    CSS
+                  </div>
                 </Flex>
-                <div
-                  className={style.box}
-                  style={{ border: "1.5px solid rgb(1, 221, 255)" }}
-                >
-                  Chakra UI
-                </div>
+                <Flex gap="5px">
+                  <div
+                    className={style.box}
+                    style={{ border: "1.5px solid #06b6d4 " }}
+                  >
+                    Tailwind
+                  </div>
+                  <div
+                    className={style.box}
+                    style={{ border: "1.5px solid rgb(1, 221, 255)" }}
+                  >
+                    Chakra UI
+                  </div>
+                </Flex>
                 <div
                   className={style.box}
                   style={{ border: "1.5px solid #F0DB4F" }}
@@ -489,7 +507,12 @@ function LandingPage() {
             >
               <CardBody borderRadius="20px">
                 <Heading size="md">Backend</Heading>
-                <div className={style.box}>Express js</div>
+                <div
+                  className={style.box}
+                  style={{ border: "1.5px solid #68a063" }}
+                >
+                  Express js
+                </div>
                 <div
                   className={style.box}
                   style={{ border: "1.5px solid #3c873a" }}
@@ -510,7 +533,12 @@ function LandingPage() {
             >
               <CardBody borderRadius="20px">
                 <Heading size="md">Database</Heading>
-                <div className={style.box}>MySQL</div>
+                <div
+                  className={style.box}
+                  style={{ border: "1.5px solid #00758f" }}
+                >
+                  MySQL
+                </div>
                 <div
                   className={style.box}
                   style={{ border: "1.5px solid #336791 " }}
@@ -531,9 +559,19 @@ function LandingPage() {
             >
               <CardBody borderRadius="20px">
                 <Heading size="md">Devops</Heading>
-                <div className={style.box}>Docker</div>
+                <div
+                  className={style.box}
+                  style={{ border: "1.5px solid #0db7ed " }}
+                >
+                  Docker
+                </div>
                 <Flex gap="5px">
-                  <div className={style.box}>GIT</div>
+                  <div
+                    className={style.box}
+                    style={{ border: "1.5px solid #f1502f  " }}
+                  >
+                    GIT
+                  </div>
                   <div
                     className={style.box}
                     style={{ border: "1.5px solid #FF9900" }}

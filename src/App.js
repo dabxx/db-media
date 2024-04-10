@@ -10,7 +10,10 @@ function App() {
           <Route index element={<LandingPage />} />
         </Route>
       </Routes>
+      
     </BrowserRouter>
+
+    
   );
 }
 
