@@ -5,7 +5,6 @@ import { Flex } from "@chakra-ui/react";
 
 import styles from "../CSS-Files/Layout.module.css";
 import SideNav from "../Components/SideNav";
-// import Header from "../Components/Header";
 
 function Layout() {
   return (
