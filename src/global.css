@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --navigation-width: 21vw;
   --bg-primary: #14131a;
