@@ -3,6 +3,7 @@ import LandingPage from "./Pages/LandingPage";
 import Layout from "./Pages/Layout";
 import LandingPage1 from "./Pages/LandingPage1";
 import LandingPage2 from "./Pages/LandingPage2";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   return (
@@ -10,9 +11,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />
-
           <Route path="gatiLanding1" element={<LandingPage1 />} />
-          <Route path="dabx" element={<LandingPage2 />} />
+          <Route path="Landing2" element={<LandingPage2 />} />
+          <Route path="*" element={<ErrorPage />} /> {/* Catch-all route */}
         </Route>
       </Routes>
     </BrowserRouter>
