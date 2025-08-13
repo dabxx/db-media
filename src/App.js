@@ -12,7 +12,7 @@ function App() {
           <Route index element={<LandingPage />} />
 
           <Route path="gatiLanding1" element={<LandingPage1 />} />
-          <Route path="dabx" element={<LandingPage2 />} />
+          <Route path="gatiLanding2" element={<LandingPage2 />} />
         </Route>
       </Routes>
     </BrowserRouter>
