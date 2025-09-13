@@ -81,29 +81,14 @@ const CircleOfFifthsApp = () => {
     };
   };
 
-  // Bass guitar fretboard visualization
+  // Piano keyboard visualization
+
   const BassGuitarNeck = () => {
     // Standard 4-string bass tuning (from thickest to thinnest string)
     const strings = ["E", "A", "D", "G"];
 
     // Show frets 0-12 for a complete octave
     const frets = Array.from({ length: 13 }, (_, i) => i);
-
-    // Chromatic notes
-    const chromaticNotes = [
-      "C",
-      "C#",
-      "D",
-      "D#",
-      "E",
-      "F",
-      "F#",
-      "G",
-      "G#",
-      "A",
-      "A#",
-      "B",
-    ];
 
     // Standard fret marker positions
     const singleDotFrets = [3, 5, 7, 9];
@@ -114,33 +99,43 @@ const CircleOfFifthsApp = () => {
       return chromaticNotes[(openIndex + fret) % 12];
     };
 
+    const handleNoteSelect = (note) => {
+      setSelectedNote(note);
+      setIsAnimating(true);
+      setTimeout(() => setIsAnimating(false), 300);
+    };
+
     return (
-      <div className="bg-gray-900 rounded-xl p-6 shadow-2xl">
-        <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-          <Music className="w-5 h-5" />
+      <div className="bg-gray-900 rounded-xl p-3 sm:p-6 shadow-2xl">
+        <h3 className="text-lg sm:text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <Music className="w-4 h-4 sm:w-5 sm:h-5" />
           Bass Guitar Fretboard
         </h3>
 
         <div className="relative overflow-x-auto">
-          <div className="max-w-[950px]">
+          {/* Responsive container - scales based on screen size */}
+          <div className="min-w-[320px] w-full max-w-none sm:max-w-[600px] md:max-w-[750px] lg:max-w-[900px] xl:max-w-[950px]">
             {/* Fret marker dots - positioned above the strings */}
-            <div className="flex mb-4 ml-12">
+            <div className="flex mb-2 sm:mb-4 ml-8 sm:ml-12">
               {frets.map((fret) => (
                 <div
                   key={fret}
                   className="relative flex items-center justify-center"
                   style={{
-                    width: fret === 0 ? "60px" : `${840 / 12}px`,
+                    width:
+                      fret === 0
+                        ? "clamp(30px, 6vw, 60px)"
+                        : "clamp(25px, 6vw, 70px)",
                   }}
                 >
                   {fret > 0 && doubleDotFrets.includes(fret) && (
-                    <div className="flex flex-col gap-1">
-                      <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
-                      <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                    <div className="flex flex-col gap-0.5 sm:gap-1">
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-300 rounded-full"></div>
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-300 rounded-full"></div>
                     </div>
                   )}
                   {fret > 0 && singleDotFrets.includes(fret) && (
-                    <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-300 rounded-full"></div>
                   )}
                 </div>
               ))}
@@ -148,14 +143,14 @@ const CircleOfFifthsApp = () => {
 
             {/* Strings with notes */}
             {strings.map((string, stringIndex) => (
-              <div key={stringIndex} className="flex items-center mb-3">
+              <div key={stringIndex} className="flex items-center mb-2 sm:mb-3">
                 {/* String label */}
-                <div className="w-8 text-white text-sm font-bold text-right mr-4">
+                <div className="w-6 sm:w-8 text-white text-xs sm:text-sm font-bold text-right mr-2 sm:mr-4">
                   {string}
                 </div>
 
                 {/* String with frets */}
-                <div className="flex-1 relative h-8 bg-gradient-to-r from-amber-600 to-amber-400 rounded-full shadow-inner">
+                <div className="flex-1 relative h-6 sm:h-8 bg-gradient-to-r from-amber-600 to-amber-400 rounded-full shadow-inner">
                   {frets.map((fret) => {
                     const note = getNoteAtFret(string, fret);
 
@@ -165,8 +160,15 @@ const CircleOfFifthsApp = () => {
                         className="absolute top-0 h-full flex items-center justify-center"
                         style={{
                           left:
-                            fret === 0 ? "0px" : `${60 + (fret - 1) * 70}px`,
-                          width: fret === 0 ? "60px" : "70px",
+                            fret === 0
+                              ? "0px"
+                              : `calc(clamp(30px, 6vw, 60px) + ${
+                                  fret - 1
+                                } * clamp(25px, 6vw, 70px))`,
+                          width:
+                            fret === 0
+                              ? "clamp(30px, 6vw, 60px)"
+                              : "clamp(25px, 6vw, 70px)",
                         }}
                       >
                         {/* Fret line */}
@@ -174,20 +176,20 @@ const CircleOfFifthsApp = () => {
                           <div className="w-0.5 h-full bg-gray-600 absolute left-0 z-10"></div>
                         )}
 
-                        {/* Note circle - only show for frets 1 and above */}
-                        {fret > -1 && scaleNotes.includes(note) && (
+                        {/* Note circle - only show for frets 0 and above */}
+                        {fret >= 0 && scaleNotes.includes(note) && (
                           <div
-                            className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold
-                                   shadow-lg transform transition-all duration-200 hover:scale-110 cursor-pointer z-20
-                                   ${
-                                     note === selectedNote
-                                       ? "bg-blue-500 text-white border border-blue-400 shadow-blue-500/30"
-                                       : "bg-green-400 text-gray-800 border border-green-600 hover:bg-green-300"
-                                   }
-                                   ${isAnimating ? "animate-pulse" : ""}`}
+                            className={`w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-xs font-bold
+                                 shadow-lg transform transition-all duration-200 hover:scale-110 cursor-pointer z-20
+                                 ${
+                                   note === selectedNote
+                                     ? "bg-blue-500 text-white border border-blue-400 shadow-blue-500/30"
+                                     : "bg-green-400 text-gray-800 border border-green-600 hover:bg-green-300"
+                                 }
+                                 ${isAnimating ? "animate-pulse" : ""}`}
                             onClick={() => handleNoteSelect(note)}
                           >
-                            {note}
+                            <span className="text-xs sm:text-xs">{note}</span>
                           </div>
                         )}
                       </div>
@@ -198,13 +200,13 @@ const CircleOfFifthsApp = () => {
             ))}
 
             {/* Fret numbers at the bottom */}
-            <div className="flex mt-4 ml-12 text-gray-400 text-xs">
+            <div className="flex mt-2 sm:mt-4 ml-8 sm:ml-12 text-gray-400 text-xs">
               {frets.map((fret) => (
                 <div
                   key={fret}
                   className="flex items-center justify-center"
                   style={{
-                    width: "70px",
+                    width: "clamp(25px, 6vw, 70px)",
                   }}
                 >
                   {fret}
