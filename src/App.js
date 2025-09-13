@@ -6,6 +6,7 @@ import LandingPage2 from "./Pages/LandingPage2";
 import ErrorPage from "./Pages/ErrorPage";
 import LandingPage3 from "./Pages/LandingPage3";
 import PricingPage from "./Pages/Pricing";
+import CircleOfFifthsApp from "./Pages/ScaleGenerator";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPage />} />
+          <Route path="scale-generator" element={<CircleOfFifthsApp />} />
           <Route path="gatiLanding1" element={<LandingPage1 />} />
           <Route path="pricing" element={<PricingPage />} />
           <Route path="Landing2" element={<LandingPage2 />} />
