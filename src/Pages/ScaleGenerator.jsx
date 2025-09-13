@@ -83,8 +83,31 @@ const CircleOfFifthsApp = () => {
 
   // Bass guitar fretboard visualization
   const BassGuitarNeck = () => {
-    const strings = ["G", "D", "A", "E"]; // Bass guitar strings (top to bottom)
+    // Standard 4-string bass tuning (from thickest to thinnest string)
+    const strings = ["E", "A", "D", "G"];
+
+    // Show frets 0-12 for a complete octave
     const frets = Array.from({ length: 13 }, (_, i) => i);
+
+    // Chromatic notes
+    const chromaticNotes = [
+      "C",
+      "C#",
+      "D",
+      "D#",
+      "E",
+      "F",
+      "F#",
+      "G",
+      "G#",
+      "A",
+      "A#",
+      "B",
+    ];
+
+    // Standard fret marker positions
+    const singleDotFrets = [3, 5, 7, 9];
+    const doubleDotFrets = [12];
 
     const getNoteAtFret = (openNote, fret) => {
       const openIndex = chromaticNotes.indexOf(openNote);
@@ -97,43 +120,72 @@ const CircleOfFifthsApp = () => {
           <Music className="w-5 h-5" />
           Bass Guitar Fretboard
         </h3>
+
         <div className="relative overflow-x-auto">
-          <div className="min-w-[800px]">
+          <div className="max-w-[950px]">
+            {/* Fret marker dots - positioned above the strings */}
+            <div className="flex mb-4 ml-12">
+              {frets.map((fret) => (
+                <div
+                  key={fret}
+                  className="relative flex items-center justify-center"
+                  style={{
+                    width: fret === 0 ? "60px" : `${840 / 12}px`,
+                  }}
+                >
+                  {fret > 0 && doubleDotFrets.includes(fret) && (
+                    <div className="flex flex-col gap-1">
+                      <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                      <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                    </div>
+                  )}
+                  {fret > 0 && singleDotFrets.includes(fret) && (
+                    <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Strings with notes */}
             {strings.map((string, stringIndex) => (
-              <div key={stringIndex} className="flex items-center mb-2">
+              <div key={stringIndex} className="flex items-center mb-3">
+                {/* String label */}
                 <div className="w-8 text-white text-sm font-bold text-right mr-4">
                   {string}
                 </div>
+
+                {/* String with frets */}
                 <div className="flex-1 relative h-8 bg-gradient-to-r from-amber-600 to-amber-400 rounded-full shadow-inner">
                   {frets.map((fret) => {
                     const note = getNoteAtFret(string, fret);
-                    const isScaleNote = scaleNotes.includes(note);
-                    const isRootNote = note === selectedNote;
 
                     return (
                       <div
                         key={fret}
                         className="absolute top-0 h-full flex items-center justify-center"
                         style={{
-                          left: `${(fret / 12) * 100}%`,
-                          width: `${100 / 12}%`,
+                          left:
+                            fret === 0 ? "0px" : `${60 + (fret - 1) * 70}px`,
+                          width: fret === 0 ? "60px" : "70px",
                         }}
                       >
+                        {/* Fret line */}
                         {fret > 0 && (
-                          <div className="w-0.5 h-full bg-gray-600 absolute left-0"></div>
+                          <div className="w-0.5 h-full bg-gray-600 absolute left-0 z-10"></div>
                         )}
-                        {isScaleNote && (
+
+                        {/* Note circle - only show for frets 1 and above */}
+                        {fret > -1 && scaleNotes.includes(note) && (
                           <div
-                            className={`
-                            w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold
-                            transform transition-all duration-300 hover:scale-110
-                            ${
-                              isRootNote
-                                ? "bg-blue-500 text-white shadow-lg shadow-blue-500/50"
-                                : "bg-green-400 text-gray-800 shadow-lg"
-                            }
-                            ${isAnimating ? "animate-pulse" : ""}
-                          `}
+                            className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold
+                                   shadow-lg transform transition-all duration-200 hover:scale-110 cursor-pointer z-20
+                                   ${
+                                     note === selectedNote
+                                       ? "bg-blue-500 text-white border border-blue-400 shadow-blue-500/30"
+                                       : "bg-green-400 text-gray-800 border border-green-600 hover:bg-green-300"
+                                   }
+                                   ${isAnimating ? "animate-pulse" : ""}`}
+                            onClick={() => handleNoteSelect(note)}
                           >
                             {note}
                           </div>
@@ -144,6 +196,21 @@ const CircleOfFifthsApp = () => {
                 </div>
               </div>
             ))}
+
+            {/* Fret numbers at the bottom */}
+            <div className="flex mt-4 ml-12 text-gray-400 text-xs">
+              {frets.map((fret) => (
+                <div
+                  key={fret}
+                  className="flex items-center justify-center"
+                  style={{
+                    width: "70px",
+                  }}
+                >
+                  {fret}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -153,7 +220,7 @@ const CircleOfFifthsApp = () => {
   // Piano keyboard visualization
   const PianoKeyboard = () => {
     const whiteKeys = ["C", "D", "E", "F", "G", "A", "B"];
-    const blackKeys = [null, "C#", "D#", null, "F#", "G#", "A#"];
+    const blackKeys = ["C#", "D#", null, "F#", "G#", "A#"]; // Removed the first null
 
     return (
       <div className="bg-gray-900 rounded-xl p-3 sm:p-4 lg:p-6 shadow-2xl">
@@ -163,6 +230,7 @@ const CircleOfFifthsApp = () => {
         </h3>
         <div className="relative overflow-x-auto">
           <div className="min-w-[300px] sm:min-w-[400px]">
+            {/* White keys */}
             <div className="flex">
               {whiteKeys.map((note, index) => {
                 const isScaleNote = scaleNotes.includes(note);
@@ -172,17 +240,17 @@ const CircleOfFifthsApp = () => {
                   <div
                     key={note}
                     className={`
-                      w-8 sm:w-10 lg:w-12 h-20 sm:h-24 lg:h-32 border border-gray-300 relative cursor-pointer
-                      transition-all duration-300 transform hover:scale-105
-                      ${
-                        isScaleNote
-                          ? isRootNote
-                            ? "bg-blue-200 border-blue-400 shadow-lg shadow-blue-500/30"
-                            : "bg-green-100 border-green-400 shadow-lg shadow-green-500/20"
-                          : "bg-white hover:bg-gray-50"
-                      }
-                      ${isAnimating && isScaleNote ? "animate-pulse" : ""}
-                    `}
+                    w-8 sm:w-10 lg:w-12 h-20 sm:h-24 lg:h-32 border border-gray-300 relative cursor-pointer
+                    transition-all duration-300 transform hover:scale-105
+                    ${
+                      isScaleNote
+                        ? isRootNote
+                          ? "bg-blue-500 border-blue-400 shadow-lg shadow-blue-500/30"
+                          : "bg-green-200 border-green-400 shadow-lg shadow-green-500/20"
+                        : "bg-white hover:bg-gray-50"
+                    }
+                    ${isAnimating && isScaleNote ? "animate-pulse" : ""}
+                  `}
                     onClick={() => handleNoteSelect(note)}
                   >
                     <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 text-xs sm:text-sm font-bold text-gray-800">
@@ -196,10 +264,17 @@ const CircleOfFifthsApp = () => {
             {/* Black keys */}
             <div className="absolute top-0 flex">
               {blackKeys.map((note, index) => {
-                if (!note)
-                  return (
-                    <div key={index} className="w-8 sm:w-10 lg:w-12"></div>
-                  );
+                // Calculate the correct left positioning for each black key
+                const positions = [
+                  "left-[20px] sm:left-[25px] lg:left-[30px]", // C#
+                  "left-[52px] sm:left-[65px] lg:left-[78px]", // D#
+                  "", // Empty space between D# and F#
+                  "left-[116px] sm:left-[145px] lg:left-[174px]", // F#
+                  "left-[148px] sm:left-[185px] lg:left-[222px]", // G#
+                  "left-[180px] sm:left-[225px] lg:left-[270px]", // A#
+                ];
+
+                if (!note) return null; // Skip the null entry
 
                 const isScaleNote = scaleNotes.includes(note);
                 const isRootNote = note === selectedNote;
@@ -208,20 +283,21 @@ const CircleOfFifthsApp = () => {
                   <div
                     key={note}
                     className={`
-                      w-5 sm:w-6 lg:w-8 h-12 sm:h-14 lg:h-20 -ml-2.5 sm:-ml-3 lg:-ml-4 cursor-pointer z-10 rounded-b
-                      transition-all duration-300 transform hover:scale-105
-                      ${
-                        isScaleNote
-                          ? isRootNote
-                            ? "bg-blue-600 shadow-lg shadow-blue-500/50"
-                            : "bg-green-600 shadow-lg shadow-green-500/30"
-                          : "bg-gray-800 hover:bg-gray-700"
-                      }
-                      ${isAnimating && isScaleNote ? "animate-pulse" : ""}
-                    `}
+                    absolute w-5 sm:w-6 lg:w-8 h-12 sm:h-14 lg:h-20 cursor-pointer z-10 rounded-b
+                    transition-all duration-300 transform hover:scale-105
+                    ${positions[index]}
+                    ${
+                      isScaleNote
+                        ? isRootNote
+                          ? "bg-blue-500 border-blue-400 shadow-lg shadow-blue-500/30"
+                          : "bg-green-200 border border-green-400 shadow-lg shadow-green-500/20"
+                        : "bg-gray-800 hover:bg-gray-700 text-red-50"
+                    }
+                    ${isAnimating && isScaleNote ? "animate-pulse" : ""}
+                  `}
                     onClick={() => handleNoteSelect(note)}
                   >
-                    <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 text-xs font-bold text-white">
+                    <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 text-xs font-bold ">
                       {note}
                     </div>
                   </div>
