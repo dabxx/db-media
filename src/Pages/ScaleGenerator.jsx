@@ -457,19 +457,19 @@ const CircleOfFifthsApp = () => {
               ))}
             </div>
 
-            {/* Scale display */}
+               {/* Scale display */}
             <div className="text-center">
               <h3 className="text-lg font-bold text-white mb-3">
                 {selectedNote}{" "}
                 {selectedMode.charAt(0).toUpperCase() + selectedMode.slice(1)}{" "}
                 Scale
               </h3>
-              <div className="flex justify-center gap-3">
+              <div className="flex justify-center gap-3 flex-wrap">
                 {scaleNotes.map((note, index) => (
                   <div
                     key={index}
                     className={`
-                      px-3 py-2 rounded-lg font-bold transition-all duration-300
+                      px-3 py-2 rounded-lg font-bold transition-all duration-300 text-center
                       ${
                         note === selectedNote
                           ? "bg-blue-500 text-white shadow-lg shadow-blue-500/50"
@@ -479,7 +479,11 @@ const CircleOfFifthsApp = () => {
                     `}
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    {note}
+                    <div className="text-base font-bold">{note}</div>
+                    <div className="text-xs opacity-80 mt-1">
+                      {index + 1}
+                      {index === 0 ? "st" : index === 1 ? "nd" : index === 2 ? "rd" : "th"}
+                    </div>
                   </div>
                 ))}
               </div>
