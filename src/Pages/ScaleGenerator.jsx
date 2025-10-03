@@ -71,6 +71,16 @@ const CircleOfFifthsApp = () => {
     setTimeout(() => setIsAnimating(false), 600);
   };
 
+  // Generate triad chords for each note in the scale
+  const generateChordForDegree = (scale, degree) => {
+    // Triad formula: root + 3rd + 5th
+    const root = scale[degree % scale.length];
+    const third = scale[(degree + 2) % scale.length];
+    const fifth = scale[(degree + 4) % scale.length];
+
+    return [root, third, fifth];
+  };
+
   // Circle positions
   const getCirclePosition = (index, radius = 140) => {
     const angle = index * 30 - 90; // 30 degrees per note, start at top
@@ -457,7 +467,7 @@ const CircleOfFifthsApp = () => {
               ))}
             </div>
 
-               {/* Scale display */}
+            {/* Scale display */}
             <div className="text-center">
               <h3 className="text-lg font-bold text-white mb-3">
                 {selectedNote}{" "}
@@ -465,27 +475,40 @@ const CircleOfFifthsApp = () => {
                 Scale
               </h3>
               <div className="flex justify-center gap-3 flex-wrap">
-                {scaleNotes.map((note, index) => (
-                  <div
-                    key={index}
-                    className={`
-                      px-3 py-2 rounded-lg font-bold transition-all duration-300 text-center
-                      ${
-                        note === selectedNote
-                          ? "bg-blue-500 text-white shadow-lg shadow-blue-500/50"
-                          : "bg-green-500 text-white shadow-lg shadow-green-500/30"
-                      }
-                      ${isAnimating ? "animate-bounce" : ""}
-                    `}
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="text-base font-bold">{note}</div>
-                    <div className="text-xs opacity-80 mt-1">
-                      {index + 1}
-                      {index === 0 ? "st" : index === 1 ? "nd" : index === 2 ? "rd" : "th"}
+                {scaleNotes.map((note, index) => {
+                  const chordNotes = generateChordForDegree(scaleNotes, index);
+                  return (
+                    <div
+                      key={index}
+                      className={`
+            px-3 py-2 rounded-lg font-bold transition-all duration-300 text-center
+            ${
+              note === selectedNote
+                ? "bg-blue-500 text-white shadow-lg shadow-blue-500/50"
+                : "bg-green-500 text-white shadow-lg shadow-green-500/30"
+            }
+            ${isAnimating ? "animate-bounce" : ""}
+          `}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <div className="text-base font-bold">{note}</div>
+                      <div className="text-xs opacity-80 mt-1">
+                        {index + 1}
+                        {index === 0
+                          ? "st"
+                          : index === 1
+                          ? "nd"
+                          : index === 2
+                          ? "rd"
+                          : "th"}
+                      </div>
+                      {/* Chord notes */}
+                      <div className="text-xs text-gray-200 mt-2">
+                        {chordNotes.join(" - ")}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
