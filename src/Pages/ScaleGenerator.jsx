@@ -77,8 +77,9 @@ const CircleOfFifthsApp = () => {
     const root = scale[degree % scale.length];
     const third = scale[(degree + 2) % scale.length];
     const fifth = scale[(degree + 4) % scale.length];
+    const seventh = scale[(degree + 6) % scale.length];
 
-    return [root, third, fifth];
+    return [root, third, fifth, seventh];
   };
 
   // Circle positions
