@@ -89,7 +89,7 @@ const LandingPage = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -202,7 +202,6 @@ const LandingPage = () => {
       </div>
 
       {/* Navigation */}
-
 
       {/* Hero Section */}
       <section
@@ -351,7 +350,7 @@ const LandingPage = () => {
                     ))}
                   </div>
                 </div>
-              )
+              ),
             )}
           </div>
         </div>
@@ -592,7 +591,9 @@ const LandingPage = () => {
           </div>
 
           <div className="text-center text-gray-400">
-            <p>&copy; 2025 db media. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} db media. All rights reserved.
+            </p>
           </div>
         </div>
       </section>
