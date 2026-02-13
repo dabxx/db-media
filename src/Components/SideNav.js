@@ -106,7 +106,7 @@ const Nav = () => {
               <button
                 key={section}
                 onClick={() => scrollToSection(section)}
-                className="block w-full text-left py-3 capitalize hover:text-blue-400 transition-colors"
+                className="block w-full text-left py-3 capitalize hover:text-blue-400 transition-colors text-white"
               >
                 {section === "hero" ? "Home" : section.replace("-", " ")}
               </button>
@@ -116,10 +116,10 @@ const Nav = () => {
               href="https://drive.google.com/file/d/1EZA09rxiBHizRl7TwdioP1QP0VlM-MiN/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 w-full py-3 hover:text-blue-400 transition-colors"
+              className="inline-flex items-center gap-2 w-full py-3 hover:text-blue-400 transition-colors text-blue-500"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FileText className="w-4 h-4" />
+              <FileText className="w-4 h-4 text-blue-500" />
               Resume
             </a>
           </div>
