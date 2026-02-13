@@ -244,7 +244,7 @@ const LandingPage = () => {
               Get In Touch
             </button>
             <a
-              href="https://drive.google.com/file/d/1SheJZqzjvGybL2vT0yGpOzU3w_Eq2AEX/view?usp=sharing" // Replace with your actual resume path
+              href="https://drive.google.com/file/d/1EZA09rxiBHizRl7TwdioP1QP0VlM-MiN/view?usp=sharing" // Replace with your actual resume path
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-zinc-400 rounded-full hover:bg-zinc-400/10 transition-all duration-300 transform hover:scale-105"
