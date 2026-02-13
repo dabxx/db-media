@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   ChevronDown,
   Code,
@@ -7,9 +7,6 @@ import {
   Mail,
   Github,
   Linkedin,
-  ExternalLink,
-  Menu,
-  X,
   FileText,
 } from "lucide-react";
 
@@ -92,7 +89,7 @@ const LandingPage = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -142,34 +139,45 @@ const LandingPage = () => {
       "Adobe Creative Suite",
       "Three.js",
     ],
+    "AI & Machine Learning": [
+      "Large Language Models (LLMs)",
+      "Prompt Engineering",
+      "Retrieval-Augmented Generation (RAG)",
+      "Vector Databases",
+      "OpenAI API",
+      "Perplexity AI API",
+      "LangChain",
+      "Embeddings",
+      "Semantic Search",
+    ],
   };
 
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with modern UI/UX",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      link: "#", // Add your project link here
-    },
-    {
-      title: "AI Dashboard",
-      description: "Analytics dashboard with AI-powered insights",
-      tech: ["React", "Python", "TensorFlow", "D3.js"],
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      link: "#", // Add your project link here
-    },
-    {
-      title: "Portfolio Website",
-      description: "Creative portfolio with advanced animations",
-      tech: ["React", "Three.js", "GSAP", "Tailwind"],
-      image:
-        "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop",
-      link: "#", // Add your project link here
-    },
-  ];
+  // const projects = [
+  //   {
+  //     title: "E-Commerce Platform",
+  //     description: "Full-stack e-commerce solution with modern UI/UX",
+  //     tech: ["React", "Node.js", "MongoDB", "Stripe"],
+  //     image:
+  //       "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+  //     link: "#", // Add your project link here
+  //   },
+  //   {
+  //     title: "AI Dashboard",
+  //     description: "Analytics dashboard with AI-powered insights",
+  //     tech: ["React", "Python", "TensorFlow", "D3.js"],
+  //     image:
+  //       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+  //     link: "#", // Add your project link here
+  //   },
+  //   {
+  //     title: "Portfolio Website",
+  //     description: "Creative portfolio with advanced animations",
+  //     tech: ["React", "Three.js", "GSAP", "Tailwind"],
+  //     image:
+  //       "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop",
+  //     link: "#", // Add your project link here
+  //   },
+  // ];
 
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
@@ -194,7 +202,6 @@ const LandingPage = () => {
       </div>
 
       {/* Navigation */}
-
 
       {/* Hero Section */}
       <section
@@ -343,7 +350,7 @@ const LandingPage = () => {
                     ))}
                   </div>
                 </div>
-              )
+              ),
             )}
           </div>
         </div>

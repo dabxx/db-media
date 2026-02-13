@@ -67,7 +67,7 @@ const Nav = () => {
           {/* Resume Button - Desktop */}
           <div className="hidden md:block">
             <a
-              href="https://drive.google.com/file/d/1SheJZqzjvGybL2vT0yGpOzU3w_Eq2AEX/view?usp=sharing"
+              href="https://drive.google.com/file/d/1EZA09rxiBHizRl7TwdioP1QP0VlM-MiN/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 text-sm"
@@ -83,9 +83,9 @@ const Nav = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 text-white" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 text-white" />
             )}
           </button>
         </div>
@@ -93,7 +93,7 @@ const Nav = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-800 border-t border-gray-700">
+        <div className="md:hidden bg-gray-800 border-t border-gray-700 text-white">
           <div className="px-4 py-2">
             {[
               "hero",
@@ -113,7 +113,7 @@ const Nav = () => {
             ))}
             {/* Resume Link - Mobile */}
             <a
-              href="https://drive.google.com/file/d/1SheJZqzjvGybL2vT0yGpOzU3w_Eq2AEX/view?usp=sharing"
+              href="https://drive.google.com/file/d/1EZA09rxiBHizRl7TwdioP1QP0VlM-MiN/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 w-full py-3 hover:text-blue-400 transition-colors"

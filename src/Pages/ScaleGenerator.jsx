@@ -1,5 +1,42 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { Music, Piano, Play } from "lucide-react";
+import React, { useState, useMemo } from "react";
+import { Music, Piano } from "lucide-react";
+
+// Scale patterns (intervals in semitones)
+const scalePatterns = {
+  major: [0, 2, 4, 5, 7, 9, 11],
+  minor: [0, 2, 3, 5, 7, 8, 10],
+  dorian: [0, 2, 3, 5, 7, 9, 10],
+  mixolydian: [0, 2, 4, 5, 7, 9, 10],
+  pentatonicMajor: [0, 2, 4, 7, 9],
+  pentatonicMinor: [0, 3, 5, 7, 10],
+};
+
+// All chromatic notes
+const chromaticNotes = [
+  "C",
+  "C#",
+  "D",
+  "D#",
+  "E",
+  "F",
+  "F#",
+  "G",
+  "G#",
+  "A",
+  "A#",
+  "B",
+];
+
+// Generate scale notes
+const generateScale = (rootNote, mode) => {
+  const rootIndex = chromaticNotes.indexOf(rootNote.replace("b", "#"));
+  const pattern = scalePatterns[mode];
+
+  return pattern.map((interval) => {
+    const noteIndex = (rootIndex + interval) % 12;
+    return chromaticNotes[noteIndex];
+  });
+};
 
 const CircleOfFifthsApp = () => {
   const [selectedNote, setSelectedNote] = useState("C");
@@ -23,46 +60,9 @@ const CircleOfFifthsApp = () => {
     "F",
   ];
 
-  // Scale patterns (intervals in semitones)
-  const scalePatterns = {
-    major: [0, 2, 4, 5, 7, 9, 11],
-    minor: [0, 2, 3, 5, 7, 8, 10],
-    dorian: [0, 2, 3, 5, 7, 9, 10],
-    mixolydian: [0, 2, 4, 5, 7, 9, 10],
-    pentatonicMajor: [0, 2, 4, 7, 9],
-    pentatonicMinor: [0, 3, 5, 7, 10],
-  };
-
-  // All chromatic notes
-  const chromaticNotes = [
-    "C",
-    "C#",
-    "D",
-    "D#",
-    "E",
-    "F",
-    "F#",
-    "G",
-    "G#",
-    "A",
-    "A#",
-    "B",
-  ];
-
-  // Generate scale notes
-  const generateScale = (rootNote, mode) => {
-    const rootIndex = chromaticNotes.indexOf(rootNote.replace("b", "#"));
-    const pattern = scalePatterns[mode];
-
-    return pattern.map((interval) => {
-      const noteIndex = (rootIndex + interval) % 12;
-      return chromaticNotes[noteIndex];
-    });
-  };
-
   const scaleNotes = useMemo(
     () => generateScale(selectedNote, selectedMode),
-    [selectedNote, selectedMode]
+    [selectedNote, selectedMode],
   );
 
   // Handle note selection
@@ -393,8 +393,8 @@ const CircleOfFifthsApp = () => {
                           isSelected
                             ? "#3b82f6"
                             : isHovered
-                            ? "#6366f1"
-                            : "rgba(55, 65, 81, 0.8)"
+                              ? "#6366f1"
+                              : "rgba(55, 65, 81, 0.8)"
                         }
                         stroke={
                           isSelected ? "#60a5fa" : "rgba(255,255,255,0.3)"
@@ -499,10 +499,10 @@ const CircleOfFifthsApp = () => {
                         {index === 0
                           ? "st"
                           : index === 1
-                          ? "nd"
-                          : index === 2
-                          ? "rd"
-                          : "th"}
+                            ? "nd"
+                            : index === 2
+                              ? "rd"
+                              : "th"}
                       </div>
                       {/* Chord notes */}
                       <div className="text-xs text-gray-200 mt-2">
