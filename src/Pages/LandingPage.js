@@ -142,6 +142,17 @@ const LandingPage = () => {
       "Adobe Creative Suite",
       "Three.js",
     ],
+    "AI & Machine Learning": [
+      "Large Language Models (LLMs)",
+      "Prompt Engineering",
+      "Retrieval-Augmented Generation (RAG)",
+      "Vector Databases",
+      "OpenAI API",
+      "Perplexity AI API",
+      "LangChain",
+      "Embeddings",
+      "Semantic Search",
+    ],
   };
 
   const projects = [
