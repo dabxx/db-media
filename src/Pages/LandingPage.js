@@ -92,7 +92,7 @@ const LandingPage = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -141,6 +141,17 @@ const LandingPage = () => {
       "Figma",
       "Adobe Creative Suite",
       "Three.js",
+    ],
+    "AI & Machine Learning": [
+      "Large Language Models (LLMs)",
+      "Prompt Engineering",
+      "Retrieval-Augmented Generation (RAG)",
+      "Vector Databases",
+      "OpenAI API",
+      "Perplexity AI API",
+      "LangChain",
+      "Embeddings",
+      "Semantic Search",
     ],
   };
 
@@ -194,7 +205,6 @@ const LandingPage = () => {
       </div>
 
       {/* Navigation */}
-
 
       {/* Hero Section */}
       <section
@@ -343,7 +353,7 @@ const LandingPage = () => {
                     ))}
                   </div>
                 </div>
-              )
+              ),
             )}
           </div>
         </div>
