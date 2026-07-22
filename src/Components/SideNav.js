@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const RESUME_URL = "https://drive.google.com/file/d/1jJz5F_xpCLxzHjVQRaJbu4ylg46sL9J8/view?usp=drive_link";
+
 
   // Intersection Observer for active section tracking
   useEffect(() => {
@@ -67,7 +69,7 @@ const Nav = () => {
           {/* Resume Button - Desktop */}
           <div className="hidden md:block">
             <a
-              href="https://drive.google.com/file/d/1EZA09rxiBHizRl7TwdioP1QP0VlM-MiN/view?usp=sharing"
+              href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 text-sm"
@@ -113,7 +115,7 @@ const Nav = () => {
             ))}
             {/* Resume Link - Mobile */}
             <a
-              href="https://drive.google.com/file/d/1EZA09rxiBHizRl7TwdioP1QP0VlM-MiN/view?usp=sharing"
+             href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 w-full py-3 hover:text-blue-400 transition-colors text-blue-500"
