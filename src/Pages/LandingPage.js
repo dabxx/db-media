@@ -133,7 +133,7 @@ const LandingPage = () => {
       "CSS3",
       "Tailwind CSS",
     ],
-    Backend: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "MySQL"],
+    Backend: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "MySQL", "Python", "Java"],
     "Tools & Others": [
       "Git",
       "Docker",
