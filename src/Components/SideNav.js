@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  const RESUME_URL = "https://drive.google.com/file/d/1jJz5F_xpCLxzHjVQRaJbu4ylg46sL9J8/view?usp=drive_link";
+  const RESUME_URL = "https://drive.google.com/file/d/16H7kVXbSt4XofZsdkKT93Z2RpNOoAiQN/view?usp=sharing";
 
 
   // Intersection Observer for active section tracking
