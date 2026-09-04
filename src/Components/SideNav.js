@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  const RESUME_URL = "https://drive.google.com/file/d/16H7kVXbSt4XofZsdkKT93Z2RpNOoAiQN/view?usp=sharing";
-
+  const RESUME_URL =
+    "https://drive.google.com/file/d/1oHWf3zINWeTvdUkgGs9f9VXHNSoew0-F/view?usp=sharing";
 
   // Intersection Observer for active section tracking
   useEffect(() => {
@@ -19,7 +19,7 @@ const Nav = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -115,7 +115,7 @@ const Nav = () => {
             ))}
             {/* Resume Link - Mobile */}
             <a
-             href={RESUME_URL}
+              href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 w-full py-3 hover:text-blue-400 transition-colors text-blue-500"

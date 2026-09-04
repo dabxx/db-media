@@ -23,7 +23,7 @@ const LandingPage = () => {
   const [formStatus, setFormStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const RESUME_URL = "https://drive.google.com/file/d/16H7kVXbSt4XofZsdkKT93Z2RpNOoAiQN/view?usp=sharing";
+  const RESUME_URL = "https://drive.google.com/file/d/1oHWf3zINWeTvdUkgGs9f9VXHNSoew0-F/view?usp=sharing";
 
 
   // Handle form input changes
